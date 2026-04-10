@@ -1,153 +1,226 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>오늘 브리핑</title>
-  <style>
-    :root {
-      --bg1: #0f172a;
-      --bg2: #111827;
-      --card: rgba(15, 23, 42, 0.74);
-      --border: rgba(148, 163, 184, 0.18);
-      --text: #e5eefc;
-      --muted: #9fb0cc;
-      --accent: #60a5fa;
-      --good: #34d399;
-      --bad: #f87171;
-      --shadow: 0 20px 50px rgba(0,0,0,.28);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(96,165,250,.18), transparent 28%),
-        radial-gradient(circle at top right, rgba(52,211,153,.14), transparent 24%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
-      min-height: 100vh;
-    }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 44px 20px 72px; }
-    .hero {
-      margin-bottom: 28px;
-      padding: 30px 28px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(96,165,250,.16), rgba(15,23,42,.66));
-      border: 1px solid rgba(147,197,253,.16);
-      box-shadow: var(--shadow);
-    }
-    h1 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 3.2rem); }
-    .subtitle { margin: 0; color: var(--muted); font-size: 1.05rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-    .card h2 { margin: 0 0 16px; font-size: 1.12rem; color: #f8fbff; }
-    .big { font-size: 2rem; font-weight: 700; margin: 6px 0 4px; }
-    .muted { color: var(--muted); }
-    .row { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(148,163,184,.1); }
-    .row:last-child { border-bottom: 0; }
-    .up { color: var(--good); font-weight: 700; }
-    .down { color: var(--bad); font-weight: 700; }
-    .wide { margin-top: 18px; }
-    .summary { margin-top: 22px; padding: 18px 20px; border-left: 4px solid var(--accent); border-radius: 14px; background: rgba(15,23,42,.5); color: #dbeafe; }
-    ul { margin: 10px 0 0; padding-left: 18px; }
-    li { margin: 6px 0; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Briefing — 2026-04-10</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e6e8eb; max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+  .header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .header .date { font-size: 13px; color: #7a8194; letter-spacing: 0.5px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #fff; }
+  .card { background: #1a1d27; border-radius: 12px; padding: 20px; margin-bottom: 16px; border: 1px solid #262a38; }
+  .card-title { font-size: 11px; font-weight: 600; color: #7a8194; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+  .weather-main { font-size: 36px; font-weight: 700; color: #fff; }
+  .weather-sub { font-size: 14px; color: #9ba3b5; margin-top: 4px; }
+  .weather-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+  .weather-item { background: #262a38; border-radius: 8px; padding: 10px 14px; font-size: 13px; }
+  .weather-item .label { color: #7a8194; font-size: 11px; }
+  .weather-item .val { color: #fff; font-weight: 600; margin-top: 2px; }
+  .index-grid { display: flex; flex-direction: column; gap: 10px; }
+  .index-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #262a38; border-radius: 8px; }
+  .index-name { font-size: 13px; color: #9ba3b5; }
+  .index-val { font-size: 14px; font-weight: 700; color: #fff; }
+  .index-chg { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+  .up { color: #34d399; background: rgba(52,211,153,0.12); }
+  .down { color: #f87171; background: rgba(248,113,113,0.12); }
+  .fx-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #262a38; border-radius: 8px; margin-bottom: 8px; }
+  .news-list { display: flex; flex-direction: column; gap: 14px; }
+  .news-item { border-left: 3px solid #3b82f6; padding-left: 14px; }
+  .news-title { font-size: 14px; font-weight: 600; color: #e6e8eb; margin-bottom: 4px; }
+  .news-body { font-size: 13px; color: #9ba3b5; line-height: 1.5; }
+  .summary { background: #1e2433; border-radius: 12px; padding: 20px; border: 1px solid #3b82f6; }
+  .summary-text { font-size: 15px; color: #e6e8eb; line-height: 1.7; }
+  .footer { text-align: center; font-size: 11px; color: #4a5168; margin-top: 24px; }
+  .section-title { font-size: 11px; font-weight: 600; color: #7a8194; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+  .market-section { margin-bottom: 16px; }
+  .market-label { font-size: 12px; color: #4a5168; margin-bottom: 8px; }
+  .schedule-item { padding: 10px 14px; background: #262a38; border-radius: 8px; font-size: 13px; color: #9ba3b5; text-align: center; }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <section class="hero">
-      <h1>오늘 브리핑</h1>
-      <p class="subtitle">2026년 4월 9일 · 목요일 · 주인용 종합 브리핑</p>
-    </section>
 
-    <section class="grid">
-      <article class="card">
-        <h2>☀️ 오늘 날씨</h2>
-        <div class="big">가벼운 비 · 6°C</div>
-        <div class="muted">아침 최저 6°C · 낮 최고 12°C · 체감 6°C</div>
-        <ul>
-          <li>일교차 크므로 건강 주의</li>
-          <li>습도: 중간</li>
-          <li>바람: 4.6 km/h</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>📈 한국 주식시장 (04/09)</h2>
-        <div class="row"><span>KOSPI</span><span>5,839.98 <span class="down">(-0.55%)</span></span></div>
-        <div class="row"><span>KOSDAQ</span><span>1,087.65 <span class="down">(-0.20%)</span></span></div>
-        <p class="muted">미-이란 휴전 합의에도 Samsung 실적 호조이나 소폭 하락. 외국인 1.5조 순매수 유입 중.</p>
-      </article>
-
-      <article class="card">
-        <h2>🇺🇸 미국 종가 (04/08)</h2>
-        <div class="row"><span>S&amp;P 500</span><span>6,782.81 <span class="up">(+2.51%)</span></span></div>
-        <div class="row"><span>NASDAQ</span><span>22,634.99 <span class="up">(+2.80%)</span></span></div>
-        <div class="row"><span>Dow Jones</span><span>47,909.92 <span class="up">(+2.85%)</span></span></div>
-        <p class="muted">미-이란 휴전 합의 + 삼성 호실적 이중 호재로 급등. '안도 랠리' 본격화.</p>
-      </article>
-
-      <article class="card">
-        <h2>🇺🇸 미국 선물</h2>
-        <p class="muted">데이터 조회 실패 — 시장 마감 후 확인 요망</p>
-      </article>
-
-      <article class="card">
-        <h2>💱 환율</h2>
-        <div class="big">1,479.75원</div>
-        <div class="muted">USD/KRW · 달러 약세 + 위험자산 선호 강화</div>
-        <ul>
-          <li>USD/KRW: 1,479.75</li>
-          <li>JPY/KRW: 9.32</li>
-          <li>EUR/KRW: 1,725.53</li>
-        </ul>
-        <p class="muted">환율 1,480원대 안정 국면. 외환당국 "변동성 관리 집중"表态.</p>
-      </article>
-
-      <article class="card">
-        <h2>📊 유가 · 금 · 달러</h2>
-        <div class="row"><span>WTI 유가</span><span>$94.41 <span class="down">(-16.4%)</span></span></div>
-        <div class="row"><span>Gold</span><span>$4,662.30 <span class="down">(-0.48%)</span></span></div>
-        <div class="row"><span>달러 인덱스</span><span>98.92 <span class="down">(-0.74%)</span></span></div>
-        <p class="muted">호르무즈 해협 재개방 → 유가 급락. 안전자산 수요 급감.</p>
-      </article>
-
-      <article class="card">
-        <h2>📰 큰 뉴스</h2>
-        <ul>
-          <li><strong>🇺🇸 미-이란 '2주 휴전' 합의</strong> — 호르무즈 해협 정상화, IAEA 핵 사찰 합의. 指定학적 리스크 급완화 → 글로벌 증시·유가 급등/급락 이중 반응.</li>
-          <li><strong>🇰🇷 삼성전자 '역대 최대' 실적</strong> — 1분기 영업이익 57.2조, 매출 133조. HBM·AI 반도체 수요 폭발. 외국인 1.5조 순매수. '30만 전자' 기대감 확산.</li>
-          <li><strong>🏛️ 한국은행 기준금리 3.50% 12회 연속 동결</strong> — 긴축 유지. 유가 급락에도 '섣부른 완화 경계'. 시장은 하반기 인하 기대 유지.</li>
-          <li><strong>🛢️ 국제유가 90달러대 급락</strong> — WTI -16.4% 폭락. 공급 불안 해소. 글로벌 물가 압력 완화 기대.</li>
-          <li><strong>🏰ECB, 연내 금리 인상 시사</strong> — 유럽 긴축 지속. 독일 지표 개선으로 80bp 인상 가시화.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>📅 주요 경제 일정</h2>
-        <ul>
-          <li><strong>4월</strong> — 삼성전자·SK하이닉스 1분기 실적 발표 시즌</li>
-          <li><strong>2주 후</strong> — 미-이란 재협상 리스크 재부상 가능성</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="card wide">
-      <h2>🗓️ 오늘 일정</h2>
-      <p class="muted">로컬 캘린더에 등록된 일정이 없습니다.</p>
-    </section>
-
-    <section class="summary">
-      한 줄 요약: <strong>미-이란 휴전 + 삼성 실적</strong>에 미국 증시는 폭등(+2.5~2.9%), 한국은 소폭 하락(-0.2~-0.6%), 유가는 -16% 급락, 환율은 <strong>1,480원대 안정</strong>. 오늘 서울은 <strong>쌀쌀한 비</strong>(최고 12°C).
-    </section>
+<div class="header">
+  <div>
+    <div class="date">2026. 4. 10 (금) · 10:00 KST</div>
+    <h1>📊 Daily Briefing</h1>
   </div>
+</div>
+
+<!-- Weather -->
+<div class="card">
+  <div class="card-title">🌤️ 날씨 — 서울</div>
+  <div class="weather-main">10°C</div>
+  <div class="weather-sub">Mist · 체감 9°C</div>
+  <div class="weather-detail">
+    <div class="weather-item">
+      <div class="label">습도</div>
+      <div class="val">100%</div>
+    </div>
+    <div class="weather-item">
+      <div class="label">바람</div>
+      <div class="val">10 km/h</div>
+    </div>
+    <div class="weather-item">
+      <div class="label">강수확률</div>
+      <div class="val">0% (현재)</div>
+    </div>
+    <div class="weather-item">
+      <div class="label">내일 예보</div>
+      <div class="val">~18°C / ~8°C</div>
+    </div>
+  </div>
+</div>
+
+<!-- Korean Market -->
+<div class="card">
+  <div class="card-title">🇰🇷 한국 증시 — 4/10 (금) 종가</div>
+  <div class="market-section">
+    <div class="market-label">KOSPI</div>
+    <div class="index-row">
+      <span class="index-name">Korea Composite Stock Price Index</span>
+      <div>
+        <span class="index-val">5,887.80</span>
+        <span class="index-chg up">▲ +0.26%</span>
+      </div>
+    </div>
+  </div>
+  <div class="market-section">
+    <div class="market-label">KOSDAQ</div>
+    <div class="index-row">
+      <span class="index-name">Korea Securities Dealers Automated Quotations</span>
+      <div>
+        <span class="index-val">1,088.50</span>
+        <span class="index-chg down">▼ -0.12%</span>
+      </div>
+    </div>
+  </div>
+  <div style="font-size:12px; color:#7a8194; margin-top:10px;">
+    ※ 외국인 투자자 재 이탈 조짐 &nbsp;|&nbsp; 4월 금통위: 금리 동결 예상
+  </div>
+</div>
+
+<!-- US Market -->
+<div class="card">
+  <div class="card-title">🇺🇸 미국 증시 — 4/9 (목) 종가</div>
+  <div class="market-section">
+    <div class="market-label">S&P 500</div>
+    <div class="index-row">
+      <span class="index-name">Standard & Poor's 500</span>
+      <div>
+        <span class="index-val">6,824.66</span>
+        <span class="index-chg up">▲ +0.62%</span>
+      </div>
+    </div>
+  </div>
+  <div class="market-section">
+    <div class="market-label">Nasdaq Composite</div>
+    <div class="index-row">
+      <span class="index-name">NASDAQ Stock Market</span>
+      <div>
+        <span class="index-val">22,822.42</span>
+        <span class="index-chg up">▲ +0.83%</span>
+      </div>
+    </div>
+  </div>
+  <div class="market-section">
+    <div class="market-label">Dow Jones Industrial Average</div>
+    <div class="index-row">
+      <span class="index-name">DJIA — 30 major corporations</span>
+      <div>
+        <span class="index-val">48,185.80</span>
+        <span class="index-chg up">▲ +0.58%</span>
+      </div>
+    </div>
+  </div>
+  <div style="font-size:12px; color:#7a8194; margin-top:10px;">
+    ※ 미-이란 2주 휴전 합의(4/9) → VIX 21.04 (-18.4%) &nbsp;|&nbsp; 위험선호심리 개선
+  </div>
+</div>
+
+<!-- US Futures -->
+<div class="card">
+  <div class="card-title">📈 미국 선물 — 4/10 (금) 오전</div>
+  <div class="index-grid">
+    <div class="index-row">
+      <span class="index-name">S&P 500 E-mini (ES)</span>
+      <div>
+        <span class="index-val">6,859.75</span>
+        <span class="index-chg up">▲ +0.53%</span>
+      </div>
+    </div>
+    <div class="index-row">
+      <span class="index-name">Nasdaq E-mini (NQ)</span>
+      <div>
+        <span class="index-val">25,247.50</span>
+        <span class="index-chg up">▲ +0.69%</span>
+      </div>
+    </div>
+    <div class="index-row">
+      <span class="index-name">Dow E-mini (YM)</span>
+      <div>
+        <span class="index-val">48,373.00</span>
+        <span class="index-chg up">▲ +0.47%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FX -->
+<div class="card">
+  <div class="card-title">💱 환율</div>
+  <div class="fx-row">
+    <span class="index-name">USD / KRW</span>
+    <div>
+      <span class="index-val">1,478.72원</span>
+    </div>
+  </div>
+  <div style="font-size:12px; color:#7a8194; margin-top:4px;">
+    ※ 휴전 기대 → 위험회피 약화 → 원/달러 상승 압력
+  </div>
+</div>
+
+<!-- Schedule -->
+<div class="card">
+  <div class="card-title">📅 오늘 일정</div>
+  <div class="schedule-item">일정 없음</div>
+</div>
+
+<!-- News -->
+<div class="card">
+  <div class="card-title">📰 큰 뉴스</div>
+  <div class="news-list">
+    <div class="news-item">
+      <div class="news-title">① 🇺🇸 미-이란 2주 휴전 합의 (4/9)</div>
+      <div class="news-body">이란-이스라엘 충돌 휴전 기대감으로 글로벌 위험자산 급반등. 4/11(토) 파키스탄에서 1차 휴전 협상 예정. 호르무즈 해협 긴장 완화로 에너지 가격 하락.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-title">② 🇰🇷 한국 기준금리 동결 예상 (4/10)</div>
+      <div class="news-body">이창용 한국은행 총재 임기 마지막 금통위. 금리 동결(현행 3.00%) 유력. 발언에서 향후 통화정책 방향 주목.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-title">③ 💻 한국 반도체株 급등</div>
+      <div class="news-body">삼성전자·SK하이닉스 4월 수출 사상 최대치 기록. 미국 이란 휴전에 따른 반도체 수급 개선 기대.</div>
+    </div>
+    <div class="news-item">
+      <div class="news-title">④ 🌏 글로벌 무역 성장률 둔화 우려 (UNCTAD)</div>
+      <div class="news-body">2026년 전체 성장률 둔화 예상. 중동 갈등+호르무즈 해협 혼란으로 에너지 가격 상승 압력 및 물류비 증가 변수.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="summary">
+  <div class="card-title">🎯 한 줄 요약</div>
+  <div class="summary-text">
+    <strong>미국-이란 휴전 합의</strong>로 글로벌 위험선호 전환, 아시아 동반 상승 속 반도체 강세 — 원/달러 1,478원대, 금리 동결 예상.
+  </div>
+</div>
+
+<div class="footer">
+  🦞 가재봇 · 2026-04-10 10:00 KST · 평일 정상 거래일
+</div>
+
 </body>
 </html>
