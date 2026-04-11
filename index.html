@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Briefing — 2026-04-10</title>
+<title>Daily Briefing — 2026-04-11</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e6e8eb; max-width: 720px; margin: 0 auto; padding: 24px 16px; }
@@ -25,25 +25,27 @@
   .index-chg { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
   .up { color: #34d399; background: rgba(52,211,153,0.12); }
   .down { color: #f87171; background: rgba(248,113,113,0.12); }
+  .neutral { color: #9ba3b5; background: rgba(155,163,181,0.12); }
   .fx-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #262a38; border-radius: 8px; margin-bottom: 8px; }
   .news-list { display: flex; flex-direction: column; gap: 14px; }
-  .news-item { border-left: 3px solid #3b82f6; padding-left: 14px; }
+  .news-item { border-left: 3px solid #f59e0b; padding-left: 14px; }
   .news-title { font-size: 14px; font-weight: 600; color: #e6e8eb; margin-bottom: 4px; }
   .news-body { font-size: 13px; color: #9ba3b5; line-height: 1.5; }
-  .summary { background: #1e2433; border-radius: 12px; padding: 20px; border: 1px solid #3b82f6; }
+  .summary { background: #1e2433; border-radius: 12px; padding: 20px; border: 1px solid #f59e0b; }
   .summary-text { font-size: 15px; color: #e6e8eb; line-height: 1.7; }
   .footer { text-align: center; font-size: 11px; color: #4a5168; margin-top: 24px; }
-  .section-title { font-size: 11px; font-weight: 600; color: #7a8194; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
   .market-section { margin-bottom: 16px; }
   .market-label { font-size: 12px; color: #4a5168; margin-bottom: 8px; }
   .schedule-item { padding: 10px 14px; background: #262a38; border-radius: 8px; font-size: 13px; color: #9ba3b5; text-align: center; }
+  .holiday-note { font-size: 12px; color: #f59e0b; background: rgba(245,158,11,0.1); border-radius: 8px; padding: 10px 14px; margin-top: 8px; }
+  .weekend-note { font-size: 12px; color: #7a8194; font-style: italic; margin-top: 8px; }
 </style>
 </head>
 <body>
 
 <div class="header">
   <div>
-    <div class="date">2026. 4. 10 (금) · 10:00 KST</div>
+    <div class="date">2026. 4. 11 (토) · 10:00 KST</div>
     <h1>📊 Daily Briefing</h1>
   </div>
 </div>
@@ -51,38 +53,38 @@
 <!-- Weather -->
 <div class="card">
   <div class="card-title">🌤️ 날씨 — 서울</div>
-  <div class="weather-main">10°C</div>
-  <div class="weather-sub">Mist · 체감 9°C</div>
+  <div class="weather-main">9°C</div>
+  <div class="weather-sub">Mist · 체감 7°C · 오전 안개 후 맑음</div>
   <div class="weather-detail">
     <div class="weather-item">
       <div class="label">습도</div>
-      <div class="val">100%</div>
+      <div class="val">93%</div>
     </div>
     <div class="weather-item">
       <div class="label">바람</div>
-      <div class="val">10 km/h</div>
+      <div class="val">8 km/h WSW</div>
     </div>
     <div class="weather-item">
       <div class="label">강수확률</div>
-      <div class="val">0% (현재)</div>
+      <div class="val">0%</div>
     </div>
     <div class="weather-item">
-      <div class="label">내일 예보</div>
-      <div class="val">~18°C / ~8°C</div>
+      <div class="label">오늘 최고/최저</div>
+      <div class="val">18°C / 8°C</div>
     </div>
   </div>
 </div>
 
 <!-- Korean Market -->
 <div class="card">
-  <div class="card-title">🇰🇷 한국 증시 — 4/10 (금) 종가</div>
+  <div class="card-title">🇰🇷 한국 증시 — 4/9 (수) 종가 (4/10 부활절 휴장)</div>
   <div class="market-section">
     <div class="market-label">KOSPI</div>
     <div class="index-row">
       <span class="index-name">Korea Composite Stock Price Index</span>
       <div>
-        <span class="index-val">5,887.80</span>
-        <span class="index-chg up">▲ +0.26%</span>
+        <span class="index-val">5,778.01</span>
+        <span class="index-chg down">▼ -1.63%</span>
       </div>
     </div>
   </div>
@@ -91,26 +93,26 @@
     <div class="index-row">
       <span class="index-name">Korea Securities Dealers Automated Quotations</span>
       <div>
-        <span class="index-val">1,088.50</span>
-        <span class="index-chg down">▼ -0.12%</span>
+        <span class="index-val">1,076.00</span>
+        <span class="index-chg down">▼ -1.29%</span>
       </div>
     </div>
   </div>
-  <div style="font-size:12px; color:#7a8194; margin-top:10px;">
-    ※ 외국인 투자자 재 이탈 조짐 &nbsp;|&nbsp; 4월 금통위: 금리 동결 예상
+  <div class="holiday-note">
+    ⚠️ 4/10(금) 부활절(Good Friday) 한국 휴장 · 가장 최근 거래일(4/9 수) 종가 기준
   </div>
 </div>
 
 <!-- US Market -->
 <div class="card">
-  <div class="card-title">🇺🇸 미국 증시 — 4/9 (목) 종가</div>
+  <div class="card-title">🇺🇸 미국 증시 — 4/10 (금) 종가</div>
   <div class="market-section">
     <div class="market-label">S&P 500</div>
     <div class="index-row">
       <span class="index-name">Standard & Poor's 500</span>
       <div>
-        <span class="index-val">6,824.66</span>
-        <span class="index-chg up">▲ +0.62%</span>
+        <span class="index-val">6,816.89</span>
+        <span class="index-chg down">▼ -0.11%</span>
       </div>
     </div>
   </div>
@@ -119,8 +121,8 @@
     <div class="index-row">
       <span class="index-name">NASDAQ Stock Market</span>
       <div>
-        <span class="index-val">22,822.42</span>
-        <span class="index-chg up">▲ +0.83%</span>
+        <span class="index-val">22,902.89</span>
+        <span class="index-chg up">▲ +0.35%</span>
       </div>
     </div>
   </div>
@@ -129,39 +131,32 @@
     <div class="index-row">
       <span class="index-name">DJIA — 30 major corporations</span>
       <div>
-        <span class="index-val">48,185.80</span>
-        <span class="index-chg up">▲ +0.58%</span>
+        <span class="index-val">47,916.57</span>
+        <span class="index-chg down">▼ -0.56%</span>
       </div>
     </div>
   </div>
-  <div style="font-size:12px; color:#7a8194; margin-top:10px;">
-    ※ 미-이란 2주 휴전 합의(4/9) → VIX 21.04 (-18.4%) &nbsp;|&nbsp; 위험선호심리 개선
+  <div class="weekend-note">
+    📌 4/11(토) 미국 증시 휴장 · 4/10(금) 종가 기준
   </div>
 </div>
 
 <!-- US Futures -->
 <div class="card">
-  <div class="card-title">📈 미국 선물 — 4/10 (금) 오전</div>
+  <div class="card-title">📈 미국 선물 — 4/10 (금) 오후 시장 마감 직전</div>
   <div class="index-grid">
     <div class="index-row">
-      <span class="index-name">S&P 500 E-mini (ES)</span>
+      <span class="index-name">Dow E-mini (YM)</span>
       <div>
-        <span class="index-val">6,859.75</span>
-        <span class="index-chg up">▲ +0.53%</span>
+        <span class="index-val">48,178</span>
+        <span class="index-chg neutral">실시간</span>
       </div>
     </div>
     <div class="index-row">
       <span class="index-name">Nasdaq E-mini (NQ)</span>
       <div>
-        <span class="index-val">25,247.50</span>
-        <span class="index-chg up">▲ +0.69%</span>
-      </div>
-    </div>
-    <div class="index-row">
-      <span class="index-name">Dow E-mini (YM)</span>
-      <div>
-        <span class="index-val">48,373.00</span>
-        <span class="index-chg up">▲ +0.47%</span>
+        <span class="index-val">25,333</span>
+        <span class="index-chg neutral">실시간</span>
       </div>
     </div>
   </div>
@@ -173,18 +168,25 @@
   <div class="fx-row">
     <span class="index-name">USD / KRW</span>
     <div>
-      <span class="index-val">1,478.72원</span>
+      <span class="index-val">1,485.41원</span>
+      <span class="index-chg down">▲ 원 약세</span>
     </div>
   </div>
-  <div style="font-size:12px; color:#7a8194; margin-top:4px;">
-    ※ 휴전 기대 → 위험회피 약화 → 원/달러 상승 압력
+  <div class="fx-row">
+    <span class="index-name">USD / JPY</span>
+    <div>
+      <span class="index-val">159.27엔</span>
+    </div>
+  </div>
+  <div style="font-size:12px; color:#7a8194; margin-top:8px;">
+    ※ 관세 전쟁 격화 + 미국 휴전 협상 지연 → 달러 강세, 원화 약세 흐름
   </div>
 </div>
 
 <!-- Schedule -->
 <div class="card">
   <div class="card-title">📅 오늘 일정</div>
-  <div class="schedule-item">일정 없음</div>
+  <div class="schedule-item">일정 없음 (주말)</div>
 </div>
 
 <!-- News -->
@@ -192,20 +194,20 @@
   <div class="card-title">📰 큰 뉴스</div>
   <div class="news-list">
     <div class="news-item">
-      <div class="news-title">① 🇺🇸 미-이란 2주 휴전 합의 (4/9)</div>
-      <div class="news-body">이란-이스라엘 충돌 휴전 기대감으로 글로벌 위험자산 급반등. 4/11(토) 파키스탄에서 1차 휴전 협상 예정. 호르무즈 해협 긴장 완화로 에너지 가격 하락.</div>
+      <div class="news-title">① 🇰🇷 정부, 26.2조 원 '전쟁 추경' 국회 통과</div>
+      <div class="news-body">중동 정세 불안·고유가 대응을 위한 26조2천억 원 추가경정예산안이 국회에서 합의 처리. 이르면 4월 중 가구당 최대 60만 원 직접 지원 지급 예정. 비상경제 조치 차원.</div>
     </div>
     <div class="news-item">
-      <div class="news-title">② 🇰🇷 한국 기준금리 동결 예상 (4/10)</div>
-      <div class="news-body">이창용 한국은행 총재 임기 마지막 금통위. 금리 동결(현행 3.00%) 유력. 발언에서 향후 통화정책 방향 주목.</div>
+      <div class="news-title">② 💻 삼성 Foundry 적자 확대 — 다음 주 실적 발표</div>
+      <div class="news-body">삼성전자 파운드리 부문의 적자가 갈수록 확대되고 있다는 분석이 제기. 글로벌 AI 투자 확대에도 자체 물적 기반(2nm 이하) 경쟁력 논란이 이어지는 상황. 해외 주요 고객사 이탈 설도 꾸준.</div>
     </div>
     <div class="news-item">
-      <div class="news-title">③ 💻 한국 반도체株 급등</div>
-      <div class="news-body">삼성전자·SK하이닉스 4월 수출 사상 최대치 기록. 미국 이란 휴전에 따른 반도체 수급 개선 기대.</div>
+      <div class="news-title">③ 🇺🇸 美 관세 전쟁 재升级 — 글로벌 금융시장 불안</div>
+      <div class="news-body">트럼프 행정권이 추가 관세 부과을 검토 중이라는报道가 나오며 재벌런스担忧 커지고 있음. 4월 초 급등 이후 미-이란 휴전 협상 지연과 맞물려 위험선호심리 다시 위축.</div>
     </div>
     <div class="news-item">
-      <div class="news-title">④ 🌏 글로벌 무역 성장률 둔화 우려 (UNCTAD)</div>
-      <div class="news-body">2026년 전체 성장률 둔화 예상. 중동 갈등+호르무즈 해협 혼란으로 에너지 가격 상승 압력 및 물류비 증가 변수.</div>
+      <div class="news-title">④ 🗳️ 6·3 지방선거 —民主党 전북지사 경선 마무리</div>
+      <div class="news-body">民主党 전북지사 후보로 이원택 의원이 최종 확정. 오세훈 서울시장과의 맞대결 구도로 가시화. 시장好感度 조사에서 오세훈이 앞서고 있다는 분석과 '대세론' 논쟁이 뜨거움.</div>
     </div>
   </div>
 </div>
@@ -214,12 +216,12 @@
 <div class="summary">
   <div class="card-title">🎯 한 줄 요약</div>
   <div class="summary-text">
-    <strong>미국-이란 휴전 합의</strong>로 글로벌 위험선호 전환, 아시아 동반 상승 속 반도체 강세 — 원/달러 1,478원대, 금리 동결 예상.
+    부활절 휴장 속 한국 증시 동반 하락(4/9 기준), 미-이란 협상 지연과 관세 전쟁 재升级으로 위험선호 위축 — 원/달러 1,485원대, 26.2조 추경 통과로 재정 확대로 대응.
   </div>
 </div>
 
 <div class="footer">
-  🦞 가재봇 · 2026-04-10 10:00 KST · 평일 정상 거래일
+  🦞 가재봇 · 2026-04-11 10:00 KST · 토요일 · 한국/미국 증시 휴장
 </div>
 
 </body>
